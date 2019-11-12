@@ -162,6 +162,12 @@ write_set( const kwiver::vital::detected_object_set_sptr set,
     d->m_first = false;
   } // end first
 
+  // skip frames with no image name
+  if( image_name.empty() )
+  {
+    return;
+  }
+
   // process all detections if a valid input set was provided
   if( !set )
   {
